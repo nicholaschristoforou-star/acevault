@@ -37,8 +37,6 @@ function AceVaultWordmark({ light = true }: { light?: boolean }) {
 }
 
 export default function AceVaultLandingPage() {
-  const formAction = "https://formspree.io/f/mojykdvo";
-
   const features = [
     {
       title: "Upcoming Payments",
@@ -69,23 +67,23 @@ export default function AceVaultLandingPage() {
   const steps = [
     {
       step: "Step 1",
-      title: "Add your recurring commitments",
+      title: "Create your account",
       description:
-        "Start with your bills, subscriptions, rent, and regular payments in just a few minutes.",
+        "Sign up in seconds and start setting up your personal financial command centre.",
       icon: "◯",
     },
     {
       step: "Step 2",
-      title: "See everything in one place",
+      title: "Add your recurring commitments",
       description:
-        "AceVault organises your upcoming payments and recurring commitments into one clear dashboard.",
+        "Enter your bills, subscriptions, rent, and regular payments so AceVault can organise them.",
       icon: "⟳",
     },
     {
       step: "Step 3",
       title: "Stay ahead before money leaves",
       description:
-        "Get alerts, insights, and reminders before payments hit so nothing catches you off guard.",
+        "See upcoming payments, track subscriptions, and stay in control from one dashboard.",
       icon: "↗",
     },
   ];
@@ -97,7 +95,8 @@ export default function AceVaultLandingPage() {
       subtext: "/ month",
       description: "Free",
       features: ["Upcoming payments", "Manual tracking", "Basic insights"],
-      cta: "Get Started",
+      cta: "Create Account",
+      href: "/signup",
       featured: false,
     },
     {
@@ -112,7 +111,8 @@ export default function AceVaultLandingPage() {
         "Weekly financial briefing",
         "Smart insights and alerts",
       ],
-      cta: "Get Early Access",
+      cta: "Get Started",
+      href: "/signup",
       featured: true,
     },
     {
@@ -126,7 +126,8 @@ export default function AceVaultLandingPage() {
         "Priority support",
         "Advanced insights",
       ],
-      cta: "Get Early Access",
+      cta: "Get Started",
+      href: "/signup",
       featured: false,
     },
   ];
@@ -156,12 +157,20 @@ export default function AceVaultLandingPage() {
               </a>
             </nav>
 
-            <a
-              href="#waitlist"
-              className="rounded-2xl bg-[#2453FF] px-5 py-3 text-sm font-medium text-white shadow-lg shadow-blue-950/40 transition hover:scale-[1.02] hover:bg-[#3561ff]"
-            >
-              Get Early Access
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="/login"
+                className="hidden rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 md:inline-flex"
+              >
+                Log In
+              </a>
+              <a
+                href="/signup"
+                className="rounded-2xl bg-[#2453FF] px-5 py-3 text-sm font-medium text-white shadow-lg shadow-blue-950/40 transition hover:scale-[1.02] hover:bg-[#3561ff]"
+              >
+                Get Started
+              </a>
+            </div>
           </header>
         </div>
 
@@ -211,26 +220,20 @@ export default function AceVaultLandingPage() {
                 ))}
               </div>
 
-              <form
-                action={formAction}
-                method="POST"
-                className="mt-7 flex flex-col gap-3 sm:flex-row"
-              >
-                <input type="hidden" name="source" value="hero_waitlist" />
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Enter your email"
-                  className="h-14 flex-1 rounded-2xl border border-white/10 bg-[#050A14] px-5 text-white outline-none placeholder:text-white/35"
-                />
-                <button
-                  type="submit"
-                  className="h-14 rounded-2xl bg-[#2453FF] px-6 font-medium text-white shadow-lg shadow-blue-950/40 transition hover:scale-[1.02] hover:bg-[#3561ff]"
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="/signup"
+                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#2453FF] px-6 font-medium text-white shadow-lg shadow-blue-950/40 transition hover:scale-[1.02] hover:bg-[#3561ff]"
                 >
-                  Get Early Access
-                </button>
-              </form>
+                  Create Account
+                </a>
+                <a
+                  href="/login"
+                  className="inline-flex h-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 font-medium text-white transition hover:bg-white/10"
+                >
+                  Log In
+                </a>
+              </div>
 
               <div className="mt-6 flex flex-wrap items-center gap-4">
                 <div className="flex -space-x-3">
@@ -548,7 +551,7 @@ export default function AceVaultLandingPage() {
                       </div>
 
                       <a
-                        href="#waitlist"
+                        href={plan.href}
                         className={`mt-7 flex w-full items-center justify-center rounded-2xl px-4 py-3 text-sm font-medium transition ${
                           plan.featured
                             ? "bg-[#2453FF] text-white hover:bg-[#3561ff]"
@@ -589,26 +592,20 @@ export default function AceVaultLandingPage() {
                 </p>
               </div>
 
-              <form
-                action={formAction}
-                method="POST"
-                className="flex flex-col gap-3 sm:flex-row md:flex-col xl:flex-row"
-              >
-                <input type="hidden" name="source" value="footer_waitlist" />
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Enter your email"
-                  className="h-14 flex-1 rounded-2xl border border-white/10 bg-[#060D1E] px-5 text-white outline-none placeholder:text-white/35"
-                />
-                <button
-                  type="submit"
-                  className="h-14 rounded-2xl bg-[#2453FF] px-6 font-medium text-white shadow-lg shadow-blue-950/30 transition hover:scale-[1.02] hover:bg-[#3561ff]"
+              <div className="flex flex-col gap-3 sm:flex-row md:flex-col xl:flex-row">
+                <a
+                  href="/signup"
+                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#2453FF] px-6 font-medium text-white shadow-lg shadow-blue-950/30 transition hover:scale-[1.02] hover:bg-[#3561ff]"
                 >
-                  Get Early Access
-                </button>
-              </form>
+                  Create Account
+                </a>
+                <a
+                  href="/login"
+                  className="inline-flex h-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 font-medium text-white transition hover:bg-white/10"
+                >
+                  Log In
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -627,8 +624,8 @@ export default function AceVaultLandingPage() {
               <a href="#" className="transition hover:text-white">
                 Terms of Service
               </a>
-              <a href="#" className="transition hover:text-white">
-                Contact
+              <a href="/login" className="transition hover:text-white">
+                Log In
               </a>
             </div>
 
